@@ -25,10 +25,10 @@ install:
   - conda config --add channels omnia
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      conda install -y -c conda-forge/label/gcc7 python=$python
+      conda install -y -c conda-forge/label/gcc7 python=${python}
       conda install -y gcc_linux-64 gxx_linux-64;
     else
-      conda install -y -c conda-forge python=$python
+      conda install -y -c conda-forge python=${python}
     fi
 
 script:
