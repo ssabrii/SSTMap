@@ -10,8 +10,7 @@ addons:
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install md5sha1sum; fi
-  - sudo apt-get update
-  - sudo apt-get install build-essential
+
 
 branches:
   only:
@@ -32,6 +31,7 @@ script:
   # Activate the test environment
   - source activate test
   # Build recipie
+  - conda-build recipe -c conda-forge/label/gcc7
   - conda build devtools/conda-recipe
   # Install locally-built package
   - conda install --yes --quiet --use-local ${PACKAGENAME}
