@@ -10,13 +10,7 @@ addons:
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install md5sha1sum; fi
-  - |
-    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      conda install -y -c conda-forge/label/gcc7 python=$python
-      conda install -y gcc_linux-64 gxx_linux-64;
-    else
-      conda install -y -c conda-forge python=$python
-    fi
+
 
 
 branches:
@@ -29,6 +23,13 @@ install:
   - export PATH=$HOME/miniconda/bin:$PATH
   - conda config --add channels conda-forge # hightest priority
   - conda config --add channels omnia
+  - |
+    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      conda install -y -c conda-forge/label/gcc7 python=$python
+      conda install -y gcc_linux-64 gxx_linux-64;
+    else
+      conda install -y -c conda-forge python=$python
+    fi
 
 script:
   # Add org channel
