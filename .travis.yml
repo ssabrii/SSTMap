@@ -23,11 +23,8 @@ install:
   - export PATH=$HOME/miniconda/bin:$PATH
   - conda config --add channels conda-forge # hightest priority
   - conda config --add channels omnia
-  - |
-    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      conda install -y -c conda-forge/label/gcc7 python=${python}
-      conda install -y gcc_linux-64 gxx_linux-64
-    fi;
+  - conda install gcc libgcc
+
 
 script:
   # Add org channel
@@ -37,7 +34,7 @@ script:
   # Activate the test environment
   - source activate test
   # Build recipie
-  - conda-build -c conda-forge/label/gcc7
+  - conda build devtools/conda-recipe
   # Install locally-built package
   - conda install --yes --quiet --use-local ${PACKAGENAME}
   #- conda install --yes --quiet pip nose nose-timer
