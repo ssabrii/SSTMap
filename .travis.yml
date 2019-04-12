@@ -39,7 +39,7 @@ script:
   # Activate the test environment
   - source activate test
   # Build recipie
-  - conda build devtools/conda-recipe
+  - conda-build recipe -c conda-forge/label/gcc7
   # Install locally-built package
   - conda install --yes --quiet --use-local ${PACKAGENAME}
   #- conda install --yes --quiet pip nose nose-timer
