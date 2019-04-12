@@ -31,7 +31,6 @@ script:
   # Activate the test environment
   - source activate test
   # Build recipie
-  - conda-build recipe -c conda-forge/label/gcc7
   - conda build devtools/conda-recipe
   # Install locally-built package
   - conda install --yes --quiet --use-local ${PACKAGENAME}
